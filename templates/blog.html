@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon" href= "https://cdn.create.vista.com/api/media/medium/450088694/stock-vector-initial-letter-vector-logo-icon?token=" type="image/x-icon"> 
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="TemplateMo">
+  <link
+    href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap"
+    rel="stylesheet">
+
+  <title>Blogs</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+
+  <!-- Additional CSS Files -->
+  <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/templatemo-stand-blog.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/owl.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+</head>
+
+<body>
+
+  {%include 'header.html'%}
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-12">
+        <img src="{% static 'assets/images/img1.jpg' %}" alt="Featured Image" class="img-fluid w-100" style="max-height: 500px; object-fit: cover;">
+      </div>
+    </div>
+  </div>
+
+  {% comment %} {% if user.is_authenticated %}
+  <div class="container mt-5">
+    <h5>MY POSTS</h5>
+    <hr>
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1">
+
+      {% for post in posts|slice:"0:3" %}
+      <div class="col col-lg-4 col-md-6 col-12 mb-2 blog-post">
+        <img src="{{media_url}}{{post.image}}" alt="" width="100%" height="300px">
+        <div class=" px-3 py-5 shadow">
+          <a href="{% url 'post' post.id %}" class="text-decoration-none text-dark">
+            <span class="text-white bg-info text-center rounded-3 mt-5" style="padding: 8px;">{{post.category}}</span>
+            <h5 class="mt-4">{{post.postname}}</h5>
+          </a>
+          <form method="post" action="{% url 'increaselikes' post.id %}">
+            {% csrf_token %}
+            <button class="float-right small" type="submit"
+              style="border: none; background: transparent; font-size: 25px;"><i
+                class="fa fa-heart text-danger"></i></button>
+          </form>
+
+          <p>{{post.content|slice:"0:100"}}...</p>
+          <p class="small text-primary">{{post.time}} </p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <a class="text-danger text-decoration-none" href="{% url 'profile' user.id %}" style="cursor:pointer;">View All
+      >></a>
+  </div>
+  {% endif %} {% endcomment %}
+
+
+  <section class="blog-posts py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-5">
+        <span class="border-bottom border-3 border-primary pb-2">RECENT POSTS</span>
+      </h2>
+      <div class="row">
+        {% for post in recent_posts %}
+        <div class="col-lg-4 col-md-6 mb-4">
+          <a href="{% url 'post' post.id %}">
+            <div class="card h-100 shadow-sm hover-effect">
+              <img src="{{media_url}}{{post.image}}" class="card-img-top" alt="{{post.postname}}" style="height: 200px; object-fit: cover;">
+              <div class="card-body">
+                <span class="badge bg-primary mb-2">{{post.category}}</span>
+                <h5 class="card-title">
+                  <a href="{% url 'post' post.id %}" class="text-decoration-none text-dark">{{post.postname}}</a>
+                </h5>
+                <p class="card-text text-muted">{{post.content|safe|truncatewords:1 }}...</p>
+              </div>
+              <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                <small class="text-muted">
+                  <i class="far fa-clock me-1"></i> {{post.time}}
+                </small>
+                <span class="badge bg-secondary">{{post.comment_set.count }} Comments</span>
+                <form method="post" action="{% url 'increaselikes' post.id %}">
+                  {% csrf_token %}
+                  <button class="btn btn-outline-danger btn-xs" type="submit" style="font-size: 0.75rem; padding: 0.25rem 0.25rem;">
+                    <i class="far fa-heart me-1"></i> Like
+                  </button>
+                </form>
+              </div>
+            </div>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  
+  
+  <style>
+    .hover-effect {
+      transition: transform 0.3s ease-in-out;
+    }
+    .hover-effect:hover {
+      transform: translateY(-5px);
+    }
+  </style>
+
+  {% include 'footer.html' %}
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
+    crossorigin="anonymous"></script>
+
+  <!-- Additional Scripts -->
+  <script src="{% static 'assets/js/custom.js' %}"></script>
+  <script src="{% static 'assets/js/owl.js' %}"></script>
+  <script src="{% static 'assets/js/slick.js' %}"></script>
+  <script src="{% static 'assets/js/isotope.js' %}"></script>
+  <script src="{% static 'assets/js/accordions.js' %}"></script>
+
+  <script language="text/Javascript">
+    cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
+    function clearField(t) {                   //declaring the array outside of the
+      if (!cleared[t.id]) {                      // function makes it static and global
+        cleared[t.id] = 1;  // you could use true and false, but that's more typing
+        t.value = '';         // with more chance of typos
+        t.style.color = '#fff';
+      }
+    }
+  </script>
+
+</body>
+
+</html>

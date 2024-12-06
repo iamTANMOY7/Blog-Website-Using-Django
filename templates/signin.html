@@ -1,0 +1,201 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" href= "https://cdn.create.vista.com/api/media/medium/450088694/stock-vector-initial-letter-vector-logo-icon?token=" type="image/x-icon"> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link
+        href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'assets/css/templatemo-stand-blog.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+
+    <title>Login</title>
+
+    <style>
+        form {
+            width: 50%;
+        }
+
+        h3 {
+            color: rgb(237, 63, 63);
+            font-weight: 500;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            margin-top: 30px;
+            background: rgb(236, 88, 88);
+            width: 100%;
+            color: #fff;
+            font-size: 20px;
+            padding: 10px;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: rgb(237, 63, 63);
+            border: 1px solid rgb(237, 63, 63);
+        }
+
+        .para {
+            padding: 20px;
+            text-align: center;
+            font-size: 18px;
+            color: #555;
+        }
+
+        a {
+            text-decoration: none;
+            color: #386cbb;
+        }
+
+        a:hover {
+            color: rgb(237, 63, 63);
+            letter-spacing: 1px;
+        }
+
+        @media screen and (max-width:600px) {
+            form {
+                width: 100%;
+            }
+        }
+        .login-with-google-btn {
+            transition: background-color .3s, box-shadow .3s;
+            
+            padding: 12px 16px 12px 42px;
+            border: none;
+            border-radius: 3px;
+            box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 1px 1px rgba(0, 0, 0, .25);
+            
+            color: #757575;
+            font-size: 14px;
+            font-weight: 500;
+            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+            
+            background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzYTguOCA4LjggMCAwIDAgMi42LTYuNnoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJhNS40IDUuNCAwIDAgMS04LTIuOUgxVjEzYTkgOSAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4=);
+            background-color: white;
+            background-repeat: no-repeat;
+            background-position: 12px 11px;
+            
+            &:hover {
+              box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25);
+            }
+            
+            &:active {
+              background-color: #eeeeee;
+            }
+            
+            &:focus {
+              outline: none;
+              box-shadow: 
+                0 -1px 0 rgba(0, 0, 0, .04),
+                0 2px 4px rgba(0, 0, 0, .25),
+                0 0 0 3px #c8dafc;
+            }            
+          }
+          .center-button {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }     
+    </style>
+</head>
+
+<body>
+
+    {%include 'header.html'%}
+
+    <div class="container">
+        <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+            <form action="{% url 'signin' %}" method="post" class="p-5 shadow">
+                {% csrf_token %}
+                <h3>LOGIN</h3>
+                <br>
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if message.tags != 'success' %}
+                            <p class="text-danger text-center">{{ message }}</p>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                <label for="" class="form-label">Username</label>
+                <div class="input-group mt-1">
+                    <span class="input-group-text">@</span>
+                    <input type="text" class="form-control" name="username" id="username">
+                </div>
+                <label for="" class="form-label mt-3">Password</label>
+                <div class="input-group mt-1">
+                    <input type="password" class="form-control" name="password" id="password">
+                </div>
+                <br>
+                <div class="forgot-password">
+                    <a href="{% url 'forget' %}">Forgot Password?</a>
+                </div>
+                <button class="btn" type="submit" name="traditional_signin" value="1">Login</button>
+                <div class="center-button">
+                    <!-- Modify the Google sign-in button to submit the form with a specific flag -->
+                    <button type="submit" name="google_signin" value="1" class="login-with-google-btn" formnovalidate>
+                        Sign in with Google
+                    </button>
+                </div>                 
+                <p class="para">Don't have an account ?<a href="{% url 'signup' %}"> Register</a></p>
+            </form>
+        </div>
+    </div>
+
+
+    {% include 'footer.html' %}
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
+        crossorigin="anonymous"></script>
+
+    <!-- Additional Scripts -->
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+    <script src="{% static 'assets/js/owl.js' %}"></script>
+    <script src="{% static 'assets/js/slick.js' %}"></script>
+    <script src="{% static 'assets/js/isotope.js' %}"></script>
+    <script src="{% static 'assets/js/accordions.js' %}"></script>
+
+
+    <script language="text/Javascript">
+        cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
+        function clearField(t) {                   //declaring the array outside of the
+            if (!cleared[t.id]) {                      // function makes it static and global
+                cleared[t.id] = 1;  // you could use true and false, but that's more typing
+                t.value = '';         // with more chance of typos
+                t.style.color = '#fff';
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
