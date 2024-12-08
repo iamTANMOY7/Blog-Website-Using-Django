@@ -3,7 +3,7 @@
 
 ## Introduction
 
-A Django-based blog site with user login, register, manage and interact with blog posts like post creation with title, description, image along with editing and deleting posts, likes, comments and an customised admin panel for managing posts and users.
+A Django-based blog site with user login, register, manage and interact with blog posts like post creation with title, description, image along with editing and deleting posts, likes, comments and a customised admin panel for managing posts and users.
 
 ## Getting Started
 
