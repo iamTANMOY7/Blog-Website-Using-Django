@@ -9,19 +9,26 @@
         }
       },
       {
+        "src": "static/**/*",
+        "use": "@vercel/static"
+      },
+      {
         "src": "staticfiles/**/*",
         "use": "@vercel/static"
       }
     ],
     "routes": [
       {
-        "src": "/(.*)",
-        "dest": "codehub/wsgi.py"
+        "src": "/static/(.*)",
+        "dest": "/static/$1"
       },
       {
-        "src": "/static/(.*)",
+        "src": "/staticfiles/(.*)",
         "dest": "/staticfiles/$1"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "codehub/wsgi.py"
       }
     ]
   }
-  

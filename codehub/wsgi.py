@@ -1,5 +1,5 @@
 """
-WSGI config for ecom_proj project.
+WSGI config for codehub project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
