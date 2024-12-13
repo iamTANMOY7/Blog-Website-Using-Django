@@ -5,7 +5,7 @@ from .models import Post,Comment,Contact
 
 
 admin.site.site_header = 'ADMIN PANEL'
-admin.site.site_title = 'BLOGGING WEBSITE'
+admin.site.site_title = 'CodeHUB'
 admin.site.index_title= 'Site Administration'
 
 # @admin.register(Contact)
