@@ -1,13 +1,27 @@
 {
-  "builds": [{
-      "src": "codehub/wsgi.py",
-      "use": "@vercel/python",
-      "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
-  }],
-  "routes": [
+    "builds": [
       {
-          "src": "/(.*)",
-          "dest": "codehub/wsgi.py"
+        "src": "codehub/wsgi.py",
+        "use": "@vercel/python",
+        "config": {
+          "maxLambdaSize": "15mb",
+          "runtime": "python3.9"
+        }
+      },
+      {
+        "src": "staticfiles/**/*",
+        "use": "@vercel/static"
       }
-  ]
-}
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "codehub/wsgi.py"
+      },
+      {
+        "src": "/static/(.*)",
+        "dest": "/staticfiles/$1"
+      }
+    ]
+  }
+  
