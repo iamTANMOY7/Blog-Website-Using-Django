@@ -48,7 +48,6 @@ def index(request):
         'category_last_post_dates': category_last_post_dates
     })
 
-
 def signup(request):
     if request.user.is_authenticated:
         return redirect("index")
@@ -187,9 +186,6 @@ def increaselikes(request, id):
     # Redirect to the referring page
     return redirect(request.META.get('HTTP_REFERER', 'index'))
 
-
-from django.http import HttpResponseForbidden
-
 def post(request, id):
     post = get_object_or_404(Post, id=id)
     
@@ -207,7 +203,6 @@ def post(request, id):
         'total_comments': Comment.objects.filter(post_id=post.id).count()
     })
 
-    
 def savecomment(request,id):
     post = get_object_or_404(Post, id=id)
     if request.method == 'POST':
@@ -252,7 +247,6 @@ def editpost(request, id):
     
     return render(request, "postedit.html", {'post': post})
 
-
 @login_required(login_url='signin')    
 def deletepost(request, id):
     post = get_object_or_404(Post, id=id)
@@ -267,7 +261,6 @@ def deletepost(request, id):
         return redirect('profile')
     else:
         return redirect('index')
-
 
 def contact_us(request):
     context={}
@@ -298,7 +291,7 @@ def forget(request):
             # Send email
             send_mail(
                 'Password Reset Request',
-                f'Click the link to reset your password. This link will expire in 24 hours: {reset_link}',
+                f'Hello {user.username},\n\nYou requested a password reset. Click the link below to reset your password. This link will expire in 24 hours:\n\n{reset_link}\n\nIf you did not request this, please ignore this email.\n\nThank you,\nYour Website Team',
                 settings.DEFAULT_FROM_EMAIL,
                 [email],
                 fail_silently=False,
@@ -368,5 +361,3 @@ def category(request, category_name):
         'recent_posts': Post.objects.filter(status='active').order_by("-id"),
         'media_url': settings.MEDIA_URL
     })
-
-    

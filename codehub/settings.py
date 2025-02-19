@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -149,38 +150,9 @@ MEDIA_ROOT = MEDIA_DIR
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Looking to send emails in production? Check out our Email API/SMTP product!
-EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
-EMAIL_HOST_USER = '643d0a00ba3438'
-EMAIL_HOST_PASSWORD = 'ee5839b7f20536'
-EMAIL_PORT = '2525'
-
-
-# CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
-# CKEDITOR_UPLOAD_PATH = "uploads/"
-# CKEDITOR_IMAGE_BACKEND = "pillow"
-# CKEDITOR_CONFIGS = {
-#     'default': {
-#         'toolbar': 'full',
-#         'height': 300,
-#         'width': 600,
-#     }
-# }
-
-# SOCIALACCOUNT_PROVIDERS = {
-#     'google': {
-#         # For each OAuth based provider, either add a ``SocialApp``
-#         # (``socialaccount`` app) containing the required client
-#         # credentials, or list them here:
-#         'APP': {
-#             'client_id': '',
-#             'secret': '',
-#             'key': ''
-#         }
-#     }
-# }
-
+#Email settings
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
@@ -189,3 +161,10 @@ LOGIN_REDIRECT_URL = 'index'
 ACCOUNT_LOGOUT_REDIRECT_URL = 'index'
 
 SOCIALACCOUNT_LOGIN_ON_GET = True
+
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
+
+#Activating Django-Heroku
+django_heroku.settings(locals())
