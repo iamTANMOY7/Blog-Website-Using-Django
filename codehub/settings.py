@@ -164,6 +164,3 @@ SOCIALACCOUNT_LOGIN_ON_GET = True
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
-
-#Activating Django-Heroku
-django_heroku.settings(locals())
