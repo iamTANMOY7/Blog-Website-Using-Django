@@ -1,6 +1,6 @@
 <h1> Blog Website using Django </h1>
 
-## You can visit my site ---> https://iamtanmoy.pythonanywhere.com/
+## You can visit my blog website ---> <a href="https://iamtanmoy.pythonanywhere.com/"><strong>➥ CodeHUB </strong></a>
 
 ## Introduction
 
